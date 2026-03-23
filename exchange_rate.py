@@ -39,10 +39,10 @@ col3, col4 = st.columns(2)
 
 with col3:
   # 환전할 금액 입력
-  base_amount = st.number_input("", min_value=1.0, value=1.0)
+  base_amount = st.number_input("", min_value=1.0, value=1.0, key="input1")
 
 with col4:
-  target_amount = st.number_input("", min_value=1.0, value=1.0)
+  target_amount = st.number_input("", min_value=1.0, value=1.0, key="input1")
   
 # 3. 환율 계산 버튼과 결과 출력 로직
 if st.button("환율 계산"):
