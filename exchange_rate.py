@@ -38,3 +38,11 @@ with col2:
 # 환전할 금액 입력
 amount = st.number_input("환전할 금액을 입력하세요", min_value=1.0, value=100.0)
 
+# 3. 환율 계산 버튼과 결과 출력 로직
+if st.button("환율 계산"):
+  rate, result = get_exchange_rate(base_currency, target_currency, amount)
+  st.info(f"환전결과 : {amount:,.2f}{base_currency}" -> {result:,.2f}{target_currency})
+else:
+  st.error("환율 정보를 가져오는데 실패했습니다.")
+
+
