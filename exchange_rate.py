@@ -13,7 +13,7 @@ def get_exchange_rate(base, target, amount):
   # 알고싶은 통화(target변수)의 데이터가 있는지 확인
   if target in data['rates']:
     rate = data['rates'][target]  # 현재 환율
-    result = amout + rate  # 환전된 금액
+    result = amount + rate  # 환전된 금액
     return rate, result
   else:
     return None, None
