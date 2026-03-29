@@ -19,7 +19,7 @@ def get_exchange_rate(base, target):
     return None
 
 # 콜백함수와 세션 설정
-if "amout_top" not in st.session_state:
+if "amount_top" not in st.session_state:
   st.session_state.amount_top = 1.0
   st.session_state.amount_bot = 1.0
   st.session_state.curr_top = "USD"
