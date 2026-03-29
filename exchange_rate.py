@@ -54,17 +54,17 @@ col1, col2 = st.columns(2)
 
 with col1:
   # 내가 가진 돈(기본값 USD) 설정
-  base_currency = st.selectbox("기준통화", currency_list, key="curr_top" on_change=currency_change)
+  base_currency = st.selectbox("기준통화", currency_list, key="curr_top", on_change=currency_change)
 
 with col2:
   # 환전할 금액 입력
-  st.number_input("", min_value=1.0, key="amount_top" on_change=calc_bottom)
+  st.number_input("", min_value=1.0, key="amount_top", on_change=calc_bottom)
 
 col3, col4 = st.columns(2)
 
 with col3:
   # 목표 통화 설정
-  st.selectbox("목표 통화", currency_list, key="curr_bot" on_change=currency_change)
+  st.selectbox("목표 통화", currency_list, key="curr_bot", on_change=currency_change)
 
 # 3. 환율 계산 실시간 결과 출력 로직
 #if base_currency == target_currency:
