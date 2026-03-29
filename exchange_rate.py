@@ -32,14 +32,14 @@ with col1:
   base_currency = st.selectbox("기준통화", currency_list, index=1)
 
 with col2:
-  # 목표 통화 설정
-  target_currency = st.selectbox("목표 통화", currency_list, index=0)
+  # 환전할 금액 입력
+  base_amount = st.number_input("", min_value=1.0, value=1.0, key="input1")
 
 col3, col4 = st.columns(2)
 
 with col3:
-  # 환전할 금액 입력
-  base_amount = st.number_input("", min_value=1.0, value=1.0, key="input1")
+  # 목표 통화 설정
+  target_currency = st.selectbox("목표 통화", currency_list, index=0)
 
 with col4:
   target_amount = st.number_input("", min_value=1.0, value=1.0, key="input2")
