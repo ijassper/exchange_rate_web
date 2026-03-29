@@ -41,14 +41,19 @@ with col3:
   # 목표 통화 설정
   target_currency = st.selectbox("목표 통화", currency_list, index=0)
 
-with col4:
-  target_amount = st.number_input("", min_value=1.0, value=1.0, key="input2")
-  
-# 3. 환율 계산 버튼과 결과 출력 로직
-if st.button("환율 계산"):
-  rate, result = get_exchange_rate(base_currency, target_currency, base_amount)
-  st.info(f"환전결과 : {base_amount:,.2f}{base_currency} -> {result:,.2f}{target_currency}")
+# 3. 환율 계산 실시간 결과 출력 로직
+if base_currency == target_currency:
+  rate = 1.0
+  result = base_amount
 else:
-  st.error("환율 정보를 가져오는데 실패했습니다.")
+  rate = get_exchange_rate(base_currency, target_currency)
+  if rate is not None:
+    result = base_amount * rate
+  else:
+    result = 0.0
+
+with col4:
+  st.number_input("", value=float(result), key="input2")
+    
 
 
