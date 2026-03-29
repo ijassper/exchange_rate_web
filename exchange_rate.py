@@ -78,7 +78,7 @@ with col3:
 #    result = 0.0
 
 with col4:
-  st.number_input("", key="amount_botg", on_change=calc_top)
+  st.number_input("", key="amount_bot", on_change=calc_top)
     
 
 
