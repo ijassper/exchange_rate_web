@@ -109,9 +109,7 @@ with col4:
 st.divider()
 
 # 계산기 UI 만들기
-st.subheader("계산기")
-
-# 숫자를 입력할 텍스트 박스만들기
+# 숫자를 입력할 텍스트박스 만들기
 st.text_input("", key="cal_formula", on_change=evaluate_formula)
 
 # 계산기 버튼 만들기
