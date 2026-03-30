@@ -66,7 +66,7 @@ def click_button(val):
     except:
       pass
   else:
-    st.session_state.cal_formula += str(result_value)
+    st.session_state.cal_formula += str(val)
 
 # 2. 웹페이지 화면 구성하기
 st.title("실시간 환율 계산기")
