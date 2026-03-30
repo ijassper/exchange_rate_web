@@ -57,17 +57,6 @@ def evaluate_formula():
       calc_bottom()
     except:
       st.session_state.cal_formula = "Error"
-  elif val == 'C':
-    st.session_state.cal_formula = ""
-  elif val == "환율 적용":
-    try:
-      # 계산 결과를 상단 환율 입력 필드로 전송
-      st.session_state.amount_top = float(st.session_state.cal_formula)
-      calc_bottom()
-    except:
-      pass
-  else:
-    st.session_state.cal_formula += str(val)
 
 # 버튼 클릭 시 처리 함수
 def click_button(val):
