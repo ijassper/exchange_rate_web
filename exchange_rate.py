@@ -83,7 +83,7 @@ with col1:
 
 with col2:
   # 환전할 금액 입력
-  st.number_input("", min_value=1.0, key="amount_top", on_change=calc_bottom)
+  st.number_input("", min_value=1.0, key=st.session_state.amount_top, on_change=calc_bottom)
 
 col3, col4 = st.columns(2)
 
