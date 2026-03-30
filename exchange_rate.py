@@ -24,9 +24,6 @@ if "amount_top" not in st.session_state:
   st.session_state.amount_bot = 1.0
   st.session_state.curr_top = "USD"
   st.session_state.curr_bot = "KRW"
-
-# 계산기용 세션 설정
-if "cal_formula" not in st.session_state:
   st.session_state.cal_formula = ""
 
   # 미달러 1.0 기준 원화 계산
@@ -48,14 +45,15 @@ def currency_change():
   calc_bottom()
 
 # 계산기 기능 함수 만들기
-def click_button(val):
-  if val == "=":
+def evaluate_formula():
+  raw_input = st.session_state.cal_formula
+  if raw_input:
     try:
       # 수식 계산
-      formula = st.session_state.cal_formula.replace('x','*').replace('%','/')
+      formula = raw_input.replace('x','*').replace('%','/')
       result_value = eval(formula)
-      st.session_state.amount_top = float(result_value)
       st.session_state.cal_formula = str(result_value)
+      st.session_state.amount_top = float(result_value)      
       calc_bottom()
     except:
       st.session_state.cal_formula = "Error"
@@ -70,6 +68,17 @@ def click_button(val):
       pass
   else:
     st.session_state.cal_formula += str(val)
+
+# 버튼 클릭 시 처리 함수
+def click_button(val):
+    if val == "=":
+        evaluate_formula()
+    elif val == 'C':
+        st.session_state.cal_formula = ""
+    elif val == "환율 적용":
+        evaluate_formula()
+    else:
+        st.session_state.cal_formula += str(val)
 
 # 2. 웹페이지 화면 구성하기
 st.title("실시간 환율 계산기")
@@ -86,14 +95,17 @@ with col1:
 
 with col2:
   # 환전할 금액 입력
-  st.number_input("", min_value=1.0, key="amount_top", on_change=calc_bottom)
+  st.number_input("금액", min_value=1.0, key="amount_top", on_change=calc_bottom)
 
 col3, col4 = st.columns(2)
 
 with col3:
   # 목표 통화 설정
-  st.selectbox("목표 통화", currency_list, key="curr_bot", on_change=currency_change)
+  st.selectbox("목표통화", currency_list, key="curr_bot", on_change=currency_change)
 
+with col4:
+  st.number_input("", key="amount_bot", on_change=calc_top)
+    
 # 3. 환율 계산 실시간 결과 출력 로직
 #if base_currency == target_currency:
 #  rate = 1.0
@@ -105,14 +117,11 @@ with col3:
 #  else:
 #    result = 0.0
 
-with col4:
-  st.number_input("", key="amount_bot", on_change=calc_top)
-    
 # 계산기 UI 만들기
 st.subheader("계산기")
 
 # 숫자를 입력할 텍스트 박스만들기
-st.text_input("수식입력", value=st.session_state.cal_formula)
+st.text_input("환율계산", key="cal_formula", on_change=evaluate_formula)
 
 # 계산기 버튼 만들기
 buttons = [
@@ -129,9 +138,11 @@ for i, btn in enumerate(buttons):
       click_button(btn)
 
 col_c, col_apply = st.columns([1,3])
+
 with col_c:
   if st.button("C", use_container_width=True):
     click_button("C")
+    
 with col_apply:
-  if st.button("환율 계산", use_container_width=True):
+  if st.button("환율 계산", use_container_width=True, type="primary"):
     click_button("환율 적용")
