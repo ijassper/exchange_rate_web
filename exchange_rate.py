@@ -112,7 +112,7 @@ buttons = [
   '0','.','=','+',
 ]
 
-cols = st.cloumns(4)
+cols = st.columns(4)
 for i, btn in enumerate(buttons):
   with cols[i%4]:
     if st.button(btn, use_container_width=True):
