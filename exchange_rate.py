@@ -122,7 +122,7 @@ buttons = [
 cols = st.columns(4)
 for i, btn in enumerate(buttons):
   with cols[i%4]:
-    if st.button(btn, key=f"btn_{btn}" use_container_width=True):
+    if st.button(btn, key=f"btn_{btn}", use_container_width=True):
       click_button(btn)
 
 if st.button("환율 계산", use_container_width=True):
