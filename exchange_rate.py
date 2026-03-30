@@ -130,7 +130,7 @@ for i, btn in enumerate(buttons):
 
 col_c, col_apply = st.columns([1,3])
 with col_c:
-  if st.button("C", use_container_width=True)
+  if st.button("C", use_container_width=True):
     click_button("C")
 with col_apply:
   if st.button("환율 계산", use_container_width=True):
