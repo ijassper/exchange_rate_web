@@ -52,8 +52,11 @@ def click_button(val):
   if val == "=":
     try:
       # 수식 계산
-      result_value = eval(st.session_state.cal_formula.replace('x','*').replace('%','/'))
+      formula = st.session_state.cal_formula.replace('x','*').replace('%','/')
+      result_value = eval(formula)
+      st.session_state.amount_top = float(result_value)
       st.session_state.cal_formula = str(result_value)
+      calc_bottom()
     except:
       st.session_state.cal_formula = "Error"
   elif val == 'C':
