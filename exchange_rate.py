@@ -106,6 +106,8 @@ with col4:
 #  else:
 #    result = 0.0
 
+st.divider()
+
 # 계산기 UI 만들기
 st.subheader("계산기")
 
