@@ -110,7 +110,7 @@ with col4:
 st.subheader("계산기")
 
 # 숫자를 입력할 텍스트 박스만들기
-st.text_input("환율계산", key="cal_formula", on_change=evaluate_formula)
+st.text_input("", key="cal_formula", on_change=evaluate_formula)
 
 # 계산기 버튼 만들기
 buttons = [
