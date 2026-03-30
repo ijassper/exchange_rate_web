@@ -80,17 +80,17 @@ col1, col2 = st.columns(2)
 
 with col1:
   # 내가 가진 돈(기본값 USD) 설정
-  st.selectbox("기준통화", currency_list, key="curr_top", on_change=currency_change)
+  st.selectbox("", currency_list, key="curr_top", on_change=currency_change)
 
 with col2:
   # 환전할 금액 입력
-  st.number_input("금액", min_value=1.0, key="amount_top", on_change=calc_bottom)
+  st.number_input("", min_value=1.0, key="amount_top", on_change=calc_bottom)
 
 col3, col4 = st.columns(2)
 
 with col3:
   # 목표 통화 설정
-  st.selectbox("목표통화", currency_list, key="curr_bot", on_change=currency_change)
+  st.selectbox("", currency_list, key="curr_bot", on_change=currency_change)
 
 with col4:
   st.number_input("", key="amount_bot", on_change=calc_top)
